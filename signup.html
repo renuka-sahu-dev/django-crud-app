@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+
+    <!-- Website Icon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/image3.jpg' %}">
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+
+            /* Background Image */
+            background-image: url("{% static 'images/image3.jpg' %}");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form Box */
+        .form-container{
+            width: 350px;
+            padding: 25px;
+
+            background: rgba(255,255,255,0.9);
+
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label{
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+            font-size: 15px;
+        }
+
+        .btn-group{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button{
+            width: 48%;
+            padding: 10px;
+
+            border: none;
+            border-radius: 5px;
+
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn{
+            background-color: green;
+        }
+
+        .cancel-btn{
+            background-color: red;
+        }
+
+        button:hover{
+            opacity: 0.8;
+        }
+
+        /* Message Style */
+        .alert{
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <!-- Django Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <h2>Signup Form</h2>
+
+        <form action="{% url 'signup_submit' %}" method="POST">
+
+            {% csrf_token %}
+
+            <!-- Name -->
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+
+            <!-- Gender -->
+            <label>Gender:</label>
+            <select name="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <!-- Email -->
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+
+            <!-- Password -->
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Enter password" required>
+
+            <!-- Buttons -->
+            <div class="btn-group">
+                <button type="submit" class="submit-btn">
+                    Submit
+                </button>
+
+                <button type="reset" class="cancel-btn">
+                    Cancel
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

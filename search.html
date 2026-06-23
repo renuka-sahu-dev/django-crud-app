@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Form Table</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/image5.jpg' %}">
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      padding: 20px;
+
+       background-image: url("{% static 'images/image7.jpg' %}");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+    }
+    .search-box{
+        margin-bottom: 20px;
+
+    }
+    input,select,button{
+        padding:8px;
+        margin-right: 10px;
+    }
+
+
+       
+
+    
+   
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      text-align:center;
+    }
+
+    th, td{
+      border:1px solid #ccc;
+      padding:12px;
+    }
+
+    th{
+      background:blue;
+      color:white;
+    }
+
+   
+    
+  </style>
+</head>
+<body>
+    <form action="{% url 'search_data' %}" method="POST">
+         {% csrf_token %}
+
+  <div class="search-box">
+    <label>name</label>
+    <input type = "text" id="name" name="name" value="{{query}}">
+   
+
+     <!-- <label>GENDER</label>
+    <select id = "gender">
+        <option value = "">all</option>
+         <option value = "male">male</option>
+          <option value = "female">female</option>
+           <option value = "other">other</option> -->
+
+    <!-- </select> -->
+    <button type="submit">search</button>
+    </div>
+    </form>
+    {% if query %}
+    
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>GENDER</th>
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+
+
+            </tr>
+            {% if result %}
+            {% for i in result %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.password}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <P>no result found</P>
+            {% endif %}
+            {% endif %}
+        </thead>
+        <tbody id = "tablebody">
+            <tr>
+                <td> </td>
+                 <td> </td>
+                  <td> </td>
+                   <td> </td>
+
+                
+
+            </tr>
+             <tr>
+                <td> </td>
+                 <td> </td>
+                  <td> </td>
+                   <td> </td>
+                   
+                
+
+            </tr>
+
+        </tbody>
+    </table>
+    
+    
+    
+</body>
+</html>

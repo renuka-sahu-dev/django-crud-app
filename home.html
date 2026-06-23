@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  
+  <title>Modern Website</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/image1.webp' %}">
+  
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+    }
+
+   
+    nav{
+      background:#222;
+      padding:15px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    nav h1{
+      color:white;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:20px;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      font-size:18px;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:orange;
+    }
+
+    /* Hero Section */
+    .hero{
+      height:90vh;
+      background:url("{% static 'images/image3.jpg' %}") no-repeat center center/cover;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:white;
+      position:relative;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.5);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero h2{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:20px;
+      margin-bottom:25px;
+    }
+
+    .btn{
+      padding:12px 25px;
+      margin:10px;
+      border:none;
+      border-radius:5px;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .explore{
+      background:orange;
+      color:white;
+    }
+
+    .more{
+      background:white;
+      color:black;
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+    }
+
+   
+    .container{
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:wrap;
+      padding:50px 20px;
+    }
+
+    .form-box{
+      background:white;
+      width:320px;
+      padding:25px;
+      border-radius:10px;
+      box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .form-box h2{
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    .form-box input{
+      width:100%;
+      padding:12px;
+      margin:10px 0;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+
+    .form-box button{
+      width:100%;
+      padding:12px;
+      background:#222;
+      color:white;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    .form-box button:hover{
+      background:orange;
+    }
+
+   
+    .about{
+      background:white;
+      padding:50px 20px;
+      text-align:center;
+    }
+
+    .about h2{
+      margin-bottom:20px;
+      font-size:35px;
+    }
+
+    .about p{
+      max-width:700px;
+      margin:auto;
+      font-size:18px;
+      line-height:1.7;
+      color:#555;
+    }
+
+    footer{
+      background:#222;
+      color:white;
+      text-align:center;
+      padding:15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  
+  <nav>
+    <h1>My Website</h1>
+
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#login">Login</a></li>
+      <li><a href="{% url 'signin'%}">Signin</a></li>
+      <li><a href="#about">About</a></li>
+       <li><a href="{% url 'usertable'%}">viewlist</a></li>
+        <li><a href="{% url 'search_bar'%}">search</a></li>
+
+    </ul>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Welcome To My Website</h2>
+      <p>Beautiful HTML Website Design With Image Section</p>
+
+      <button class="btn explore">Explore</button>
+      <button class="btn more">More</button>
+    </div>
+  </section>
+  
+
+  <!-- <section class="container">
+
+    <div class="form-box" id="login">
+      <h2>Login</h2> -->
+
+      
+    <!-- </div>
+
+    
+    <div class="form-box" id="signup">
+      <h2>Signin</h2>
+
+     
+    </div>
+
+  </section> -->
+
+  
+ 
+    <!-- <h2>About Us</h2>
+
+   
+  </section> -->
+
+ 
+
+</body>
+</html>
